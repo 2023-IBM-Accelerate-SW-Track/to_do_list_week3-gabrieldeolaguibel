@@ -38,8 +38,9 @@ test('test that App component doesn\'t add a task without task name', () => {
   fireEvent.change(inputDate, { target: { value: "12/31/2023"}});
   fireEvent.click(addButton);
   const check = screen.queryByText("12/31/2023");
-  expect(check).not.toBeInTheDocument();  // task should not be rendered as task name is missing
+  expect(check).toBeNull();  // task should not be rendered as task name is missing
 });
+
 
 test('test that App component doesn\'t add a task without due date', () => {
   render(<App />);
