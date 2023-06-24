@@ -33,13 +33,15 @@ test('test that App component doesn\'t render duplicate Task', () => {
 
 test('test that App component doesn\'t add a task without task name', () => {
   render(<App />);
+  const listBefore = screen.getAllByRole('listitem');
   const inputDate = screen.getByPlaceholderText("MM/DD/YYYY");
   const addButton = screen.getByRole('button', {name: /Add/i});
   fireEvent.change(inputDate, { target: { value: "12/31/2023"}});
   fireEvent.click(addButton);
-  const check = screen.queryByText("12/31/2023");
-  expect(check).toBeNull();  // task should not be rendered as task name is missing
+  const listAfter = screen.getAllByRole('listitem');
+  expect(listBefore.length).toEqual(listAfter.length);  // task count should remain same
 });
+
 
 
 test('test that App component doesn\'t add a task without due date', () => {
