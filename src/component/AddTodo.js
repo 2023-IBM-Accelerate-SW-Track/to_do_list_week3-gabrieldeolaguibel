@@ -33,7 +33,7 @@ class AddTodo extends Component {
       id: Date.now(),
       content: this.state.content,
       date: this.state.date,
-      due: this.state.due
+      due: this.state.due ? this.state.due.toLocaleDateString() : null
     });
     this.setState({
       content: "",
