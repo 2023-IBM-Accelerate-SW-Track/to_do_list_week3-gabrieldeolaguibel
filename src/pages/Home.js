@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AddTodo from "../component/AddTodo";
-import Todos from "../component/Todos";
+import Todos from "../component/todos";
 
 class Home extends Component {
   state = {
